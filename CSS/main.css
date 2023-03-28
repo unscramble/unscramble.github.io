@@ -1,6 +1,8 @@
 
-.nav { 
-  display: inline-block;
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 40px !important;
 }
 
 .navbar-brand {
@@ -13,7 +15,9 @@
 
 body {
     background-color: #28292B;
-    text-align: center; 
+    text-align: center;
+    max-width: 100%;
+    overflow-x: hidden; 
 } 
 
 .game-container {
