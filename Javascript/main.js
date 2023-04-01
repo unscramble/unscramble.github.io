@@ -39,6 +39,7 @@ function getRandom(word_list) {
 let word_four = ''
 let word_five = ''
 
+
 function displayBoard () {
     // Initialize Board
     if (localStorage.getItem('init_board') == null) {
@@ -51,11 +52,17 @@ function displayBoard () {
         localStorage.setItem('init_board',JSON.stringify(gb));
         localStorage.setItem('game_board',JSON.stringify(gb));
         localStorage.setItem('guessed_word_cnt', 0);
+        // add in gameplay/lastturn check
+        localStorage.setItem('gameplay',JSON.stringify(gameplay));
+        localStorage.setItem('lastturn',JSON.stringify(lastturn));
     } else {
     // get previous data from local storage
         word_four = JSON.parse(localStorage.getItem('word_four'));
         word_five = JSON.parse(localStorage.getItem('word_five'));
-        localStorage.setItem('guessed_word_cnt',JSON.parse(localStorage.getItem('guessed_word_cnt')))    
+        localStorage.setItem('guessed_word_cnt',JSON.parse(localStorage.getItem('guessed_word_cnt')))
+        // add in gameplay/lastturn ref
+        gameplay = JSON.parse(localStorage.getItem('gameplay'));
+        lastturn = JSON.parse(localStorage.getItem('lastturn'));    
         let gb = JSON.parse(localStorage.getItem('game_board'));
         for (let i = 0; i < gb.length; i++) {
             document.getElementById(i).innerHTML = gb[i];
@@ -68,20 +75,32 @@ return gb
 
 // displaying current game board from local storage
 game_board = displayBoard();
+
+
 // Set keys = to game board letters
 for (i = 0; i < game_board.length; i++) {
     boardKey = document.getElementById(i); 
     boardKey.dataset.key = game_board[i] ; 
 }
 
+
 // checking the board state when the page has been refreshed
-for (i=0;i<game_board.length;i++) {
+if (lastturn == true && gameplay == false) {
+    for (i=0; i<game_board.length; i++) {
+        bttn_elm = document.getElementById(i);
+        bttn_elm.disabled = true;
+        bttn_elm.style.backgroundColor = 'rgb(113, 121, 126)'; // gray out
+    }
+} 
+for (i=0; i<game_board.length; i++) {
     bttn_elm = document.getElementById(i);
     if (game_board[i] == '') {
-        bttn_elm.disabled=true;
-        bttn_elm.style.backgroundColor = 'rgb(113, 121, 126)';
+        bttn_elm.disabled = true;
+        bttn_elm.style.backgroundColor = 'rgb(113, 121, 126)'; // gray out
         }
     }
+
+
 //  get last displayed message when the page has been refreshed    
 if (localStorage.getItem('current_msg') != null) {
     document.getElementById('message').innerHTML = JSON.parse(localStorage.getItem('current_msg'))
@@ -98,7 +117,6 @@ function gameWinCheck(game_board,lastturn,word) {
             bk_cnt += 1;
         }
     }
-
     // Messaging 
     if (lastturn == false) {
         if (bk_cnt == 9) {
@@ -106,16 +124,17 @@ function gameWinCheck(game_board,lastturn,word) {
             document.getElementById("message").innerHTML = congrats_msg;
             localStorage.setItem('current_msg',JSON.stringify(congrats_msg));
             gameplay = false;
+            localStorage.setItem('gameplay',JSON.stringify(gameplay));
         } else if (word == word_four | word == word_five) {
             const one_wrd_msg = `Congratulations, ${word} was one of the words! There is still one word to guess.`;
             document.getElementById("message").innerHTML = one_wrd_msg;
             localStorage.setItem('current_msg',JSON.stringify(one_wrd_msg));
-            //if (guessed_words.length == 5) { lastturn = true};
+
         } else {
             const lost_msg = `Sorry, ${word} was not one of the correct words. Try again.`;
             document.getElementById("message").innerHTML = lost_msg;
             localStorage.setItem('current_msg',JSON.stringify(lost_msg));
-            //if (guessed_words.length == 5) { lastturn = true};
+ 
         }
     } else if (lastturn == true) {
         if (bk_cnt == 9) {
@@ -123,21 +142,26 @@ function gameWinCheck(game_board,lastturn,word) {
             document.getElementById("message").innerHTML = congrats_msg;
             localStorage.setItem('current_msg',JSON.stringify(congrats_msg));
             gameplay = false;
+            localStorage.setItem('gameplay',JSON.stringify(gameplay));
         } else if (word == word_four | word == word_five) {
-            const one_wrd_msg = `${word} was one of the words but you are out of guesses... Better luck next time`;
+            const one_wrd_msg = `${word.charAt(0).toUpperCase() + word.slice(1)} was one of the words but you are out of guesses... Better luck next time`;
             document.getElementById("message").innerHTML = one_wrd_msg;
             localStorage.setItem('current_msg',JSON.stringify(one_wrd_msg));
             gameplay = false;
+            localStorage.setItem('gameplay',JSON.stringify(gameplay));
         } else {
             const lost_msg = 'Sorry, You are all out of guesses. Better luck next time.';
             document.getElementById("message").innerHTML = lost_msg;
             localStorage.setItem('current_msg',JSON.stringify(lost_msg));
             gameplay = false;
+            localStorage.setItem('gameplay',JSON.stringify(gameplay));
                 }
-            for (i = 0; i < 9; i++) {
-                bttn_elm = document.getElementById(i);
-                bttn_elm.disabled=true;
-                bttn_elm.style.backgroundColor = 'rgb(113, 121, 126)'; // gray out
+            if (gameplay == false) {
+                for (i = 0; i < 9; i++) {
+                    bttn_elm = document.getElementById(i);
+                    bttn_elm.disabled=true;
+                    bttn_elm.style.backgroundColor = 'rgb(113, 121, 126)'; // gray out
+                }
         }
     }
 }
@@ -202,12 +226,15 @@ function displayGuesses(){
 
 //game logic
 function checkWord(word){
-    if (JSON.parse(localStorage.getItem('guessed_word_cnt')) < 5) {
-        if (word != '') {         
+    //if (JSON.parse(localStorage.getItem('guessed_word_cnt')) < 5) {
+        if (word != '' && word != null) {         
             localStorage.setItem('guessed_word_cnt',JSON.parse(localStorage.getItem('guessed_word_cnt'))+1)
-            if (guessed_words.length >= 5) { lastturn = true};
+            if (guessed_words.length >= 4) { 
+                lastturn = true;
+                localStorage.setItem('lastturn',JSON.stringify(lastturn));
+            };
             // if word is correct
-            if (word == word_four | word == word_five) {
+            if (word == word_four || word == word_five) {
                 guessed_words.push("<span style='color: rgb(125, 206, 160)'>" + word); // green
                 localStorage.setItem('guessed_words',JSON.stringify(guessed_words));
                 displayGuesses();
@@ -240,7 +267,7 @@ function checkWord(word){
                 gameWinCheck(game_board,lastturn,word);
             }
         } else {document.getElementById("message").innerHTML = "No word Entered. Try again.";}
-    } else {document.getElementById("message").innerHTML = 'Sorry, You have already run out of guesses for today.'}
+    //} else {document.getElementById("message").innerHTML = 'Sorry, You have already run out of guesses for today.'}
 }
 
 
@@ -278,7 +305,7 @@ for (let i = 0; i < keys.length; i++) {
     keys[i].onclick = ({ target }) => {
         const key = target.getAttribute('data-key')
         const loc = target.getAttribute('id')
-        console.log(key);
+        //console.log(key);
         addSubLetter(loc);
     }
 }
