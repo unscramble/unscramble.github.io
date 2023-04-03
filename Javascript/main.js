@@ -2,6 +2,9 @@
 startDate = new Date('Thu Mar 23 2023 00:00:00 GMT-0400 (Eastern Daylight Time)');
 todayDate = new Date();
 
+let janOne = new Date(todayDate.getFullYear(),0,1);
+let week = Math.ceil((((todayDate.getTime() - janOne.getTime()) / 86400000) + janOne.getDay() + 1) / 7); 
+
 dayDiff = Math.floor((Math.abs(todayDate - startDate)/1000)/(60*60*24))
 
 let instanceNum = localStorage.getItem('instanceNum');
@@ -22,18 +25,19 @@ let lastturn = false;
 
 let guessed_words = [];
 
-date = new Date();
 
-pseudoRandNum = date.getDate().toString() + date.getMonth().toString().padStart(2,0) + date.getYear().toString()
-pseudoRandNum = parseInt(pseudoRandNum)
-pseudoRandNum = (pseudoRandNum/(date.getDay()+110))
-pseudoRandNum = pseudoRandNum % 1
+randNum1 = parseInt(todayDate.getDate().toString() + todayDate.getMonth().toString().padStart(2,0) + todayDate.getYear().toString());
+randNum1 = (randNum1/(todayDate.getDay()+110)) % 1;
+
+randNum2 = parseInt(todayDate.getDate().toString() + todayDate.getMonth().toString().padStart(2,0) + todayDate.getYear().toString());
+randNum2 = (randNum2/(week + 3)) % 1;
 
 
-function getRandom(word_list) {
-    let rand_num = Math.floor(pseudoRandNum * word_list.length)
+function getRandom(word_list, randNum) {
+    let rand_num = Math.floor(randNum * word_list.length)
     return rand_num;
 }
+
 
 let word_four = ''
 let word_five = ''
@@ -42,8 +46,8 @@ let word_five = ''
 function displayBoard () {
     // Initialize Board
     if (localStorage.getItem('init_board') == null) {
-        word_four = word_four_list[getRandom(word_four_list)];
-        word_five = word_five_list[getRandom(word_five_list)];
+        word_four = word_four_list[getRandom(word_four_list, randNum1)];
+        word_five = word_five_list[getRandom(word_five_list, randNum2)];
         let combined_words = word_four + word_five;
         localStorage.setItem('word_four',JSON.stringify(word_four));
         localStorage.setItem('word_five',JSON.stringify(word_five));
@@ -168,7 +172,7 @@ function gameWinCheck(game_board,lastturn,word) {
 function scrambleWords(words) {
     var arr = words.split('');
     arr.sort(function() {
-        return 0.5 - pseudoRandNum;
+        return 0.5 - randNum1;
     });
     words = arr.join('');
     return words
