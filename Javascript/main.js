@@ -17,9 +17,14 @@ if (instanceNum == null) {
     }
 }
 
+// easy word list
+let word_four_list = ['coat','fish','good','read','mean','next','work','road','toad','head','jeep','moon','food','near','star','land','mine','ship','rate','zero','gate','edge','mark','even','free','itch','form','tone','tune','loaf','wave','ache','sign','brew','comb','glue','vest']
+let word_five_list = ['point','great','broke','front','quick','speed','money','chase','write','cheap','green','twist','chant','serve','yacht','noise','wedge','prize','trend','trail','pause','eject','twine','knock','quake','awake','rouge','blend','glare','vault','swirl','broil','knead','whisk','sweep','click','slump','pivot','visit','reset','brisk','panel','smart','radio']
 
-let word_four_list = ['move','hear','call','stop','turn','talk','hope','stay','hold','wish','lead','wait','send','form','sell','open','join','save','fall','mind','deal','face','lose','walk','tend','draw','pick','cost','pass','seek','grow','care','note','beat','wear','cope','pull','fill','gain','hurt','miss','rise','vary','drop','cast','ring','test','last','rely','plan','mark','sign','vote','deny','hide','sing','dare','earn','rest','suit','lift','sort','roll','wash','jump','cook','step','view','risk','wake','slip','link','name','lend','head','land','shed','warn','pour','knit','back','free','lack','stir','list','copy','hand','quit','swim','fund','pack','sail','slow','rush','sink','grab','calm','drag','flow','pose','time','spot','hire','bend','urge','lock','warm','tour','halt','cool','heat','melt','lean','load','tear','line','fish','shop','race','cure','swap','stem','wind','snap','bake','fold','base','host','curb','fade','book','leap','wrap','date','boil','flee','park','echo','edit','ruin','ship','heal','cash','chat','seal','file','spin','wave','plot','trim','part','rain','undo','scan','defy','weep','tidy','rock','tape','chew','cite','team','mend','chop','skip','type','long','reap','rank','exit','tuck','pity','peel','prop','envy','dine','haul','sack','mess','soar','tack','dash','bail','tune','star','gaze','roam','omit','fend','dial','fare','rate','bond','term','curl','dust','iron','bank','emit','near','pile','duck','poke','clip','mask','bust','hook','tire','bump','root','busy','bowl','slam','levy','heed','veto','glue','crop','tilt','glow','site','sway','nick','ward','tone','hail','bark','thin','bulk','fuel','comb','fret','nest','slot','deem','sift','diet','oust','ache','pave','flip','code','dawn','film','rake','blur','fuse','zoom','wage','loom','coat','trot','hint','clap','joke','post','brew','coax','yell','snow','nail','flex','foul','wade','blot','inch','hurl','seep','roar','cram','lash','claw','mash','foot','damp','gasp','drum','grin','rack','bask','wilt','fake','rust','beam','tame','snip','bath','mail','fuss','skim','dart','keel','dish','wire','dull','slim','boss','weld','vent','hark','prod','howl','wean','down','dock','foil','wing','sigh','bolt','spur','thaw','farm','wane','veer','plod','trip','grit','even','clog','home','stun','bide','lump','swop','rein','chip','yawn','port','side','toil','coil','dent','warp','mull','cart','gulp','loop','bale','reel','coin','idle','pare','snub','flop','wail','fine','leaf','heap','itch','camp','trek','stew','quiz','mine','shoe','fray','moss','zero','loot','putt','doze','scar','true','stow','muse','maim','peek','gnaw','pine','jest','lull','knot','flay','jeer','snag','duff','word','herd','room','surf','brag','pout','tile','seat','worm','silt','hone','sour','fume','tank','clot','slog','pair','laze','flag','firm','belt','rout','suss','jolt']
-let word_five_list = ['would','think','shall','leave','bring','start','thank','allow','write','carry','offer','speak','stand','learn','agree','apply','avoid','begin','voice','spend','build','reach','enjoy','watch','cover','raise','cause','break','prove','occur','exist','check','serve','share','enter','visit','claim','worry','place','drive','argue','catch','fight','refer','admit','sleep','close','arise','point','drink','treat','throw','study','press','sound','teach','trust','match','state','split','adopt','clear','guess','blame','cross','focus','count','doubt','laugh','judge','solve','alter','order','burst','relax','issue','train','clean','limit','climb','shift','imply','shoot','phone','waste','dance','score','upset','paint','grant','react','guide','knock','reply','shake','fetch','fancy','trace','print','boost','smile','cease','adapt','quote','yield','spell','shout','spare','dress','delay','steal','range','hurry','store','trade','light','swear','dream','block','stare','house','slide','grasp','swing','speed','plant','taste','weigh','mount','brush','cater','repay','sense','shape','alert','seize','exert','crack','guard','float','greet','spoil','merge','coach','drain','chase','anger','await','drift','renew','sweep','cheer','steer','shine','unite','draft','track','price','elect','amend','round','march','level','widen','board','crash','chuck','plead','twist','blend','dwell','grade','value','award','spill','stock','cling','empty','pause','tread','stage','boast','incur','stamp','panic','rally','infer','crawl','stuff','label','evoke','abide','drill','flood','click','total','cheat','shell','crush','model','evade','beset','field','scare','hatch','rival','sweat','haunt','blast','equip','alarm','merit','input','swell','chair','excel','shear','scrap','shove','annoy','nurse','forge','sneak','spray','amuse','avert','rinse','mould','tense','shock','carve','defer','mimic','clash','rebel','loose','recur','stake','scrub','usher','weave','hover','scale','gauge','ferry','whisk','wreck','utter','shrug','brief','dread','erase','lobby','trail','lodge','queue','space','toast','reset','pitch','stray','equal','adore','scoop','query','charm','halve','chart','wield','pluck','graze','enact','budge','kneel','spark','ensue','quell','waive','expel','repel','allay','dodge','heave','unify','align','bully','blink','enrol','glide','forgo','curse','clamp','front','relay','index','title','erupt','avail','trick','lease','water','video','perch','lapse','erode','crowd','pride','group','stain','stack','storm','curve','stall','flock','fling','blush','prune','faint','sting','crave','brake','thump','purge','fault','shore','swoop','patch','pilot','roast','squat','nudge','brace','stoop','spike','swamp','reign','adorn','inset','delve','sight','amaze','quash','stave','piece','awake','audit','wreak','crown','exact','spoon','slump','ditch','blaze','brave','chant','court','bloom','shade','hedge','bluff','clasp','surge','vouch','cloud','elude','roost','eject','allot','staff','grate','waver','glean','rough','smear','knead','grace','wince','while','latch','brood','poach','clone','waken','flare','glare','brand','hoist','abate','sneer','skate','blank','craft','hitch','flout','grill','churn','skirt','usurp','bitch','lever']
+// harder word list
+//let word_four_list = ['coat','fish','good','read','mean','next','work','road','toad','head','jeep','moon','food','near','star','land','mine','ship','rate','zero','gate','edge','mark','even','free','itch','form','tone','tune','loaf','wave','ache','sign','brew','comb','glue','vest']
+//let word_five_list = ['point','great','broke','front','quick','speed','money','chase','write','cheap','green','twist','chant','serve','yacht','noise','wedge','prize','trend','trail','pause','eject','twine','knock','quake','awake','rouge','blend','glare','vault','swirl','broil','knead','whisk','sweep','click','slump','pivot','visit','reset','brisk','panel','smart','radio']
+
 
 let gameplay = true;
 let lastturn = false;
@@ -52,7 +57,7 @@ function displayBoard () {
         let combined_words = word_four + word_five;
         localStorage.setItem('word_four',JSON.stringify(word_four));
         localStorage.setItem('word_five',JSON.stringify(word_five));
-        gb = createBoard(combined_words);
+        gb = createBoard(combined_words,randomizer,seed);
         localStorage.setItem('init_board',JSON.stringify(gb));
         localStorage.setItem('game_board',JSON.stringify(gb));
         localStorage.setItem('guessed_word_cnt', 0);
@@ -75,6 +80,41 @@ function displayBoard () {
     }
 return gb
 } 
+
+seed = randNum1.toString().slice(6,8); 
+
+function randomizer (initSeed) {
+    if (parseInt(initSeed) < 11) {
+        seedNum = parseInt(initSeed) + 50;  
+    } else {
+        seedNum = parseInt(initSeed);   
+    }
+    result = parseInt((seedNum * seedNum).toString().padStart(4,0).slice(1,3))/100;
+
+    return result
+}
+
+function createBoard(combinedwords,cb,seed) {
+    let game_board = [];
+    let index = 9;
+    let randomIndex;
+    let arr = combinedwords.split('');
+
+    seed = seed
+    while (index != 0) {
+        randomIndex = Math.floor((seed / 100) * index);
+        index--;
+
+        [arr[index], arr[randomIndex]] = [arr[randomIndex], arr[index]];
+        seed = randomizer(seed) * 100
+        //console.log(seed)
+    } 
+    game_board = arr
+    for (i=0; i < game_board.length; i++) {
+        document.getElementById(i).innerHTML = game_board[i];
+    }
+    return game_board;
+  }
 
 
 // displaying current game board from local storage
@@ -168,27 +208,6 @@ function gameWinCheck(game_board,lastturn,word) {
                 }
         }
     }
-}
-
-function scrambleWords(words) {
-    var arr = words.split('');
-    arr.sort(function() {
-        return 0.5 - randNum1;
-    });
-    words = arr.join('');
-    return words
-}
-
-function createBoard(combined_words) {
-    let game_board = [];
-    let board = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
-    scramble = scrambleWords(combined_words);
-    for (let i = 0; i < scramble.length; i++) {
-        board[i] = scramble[i];
-        document.getElementById(i).innerHTML = board[i];
-        game_board.push(board[i])
-    }
-    return game_board;
 }
 
 
