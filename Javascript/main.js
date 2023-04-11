@@ -81,11 +81,11 @@ function displayBoard () {
 return gb
 } 
 
-seed = randNum1.toString().slice(6,8); 
+seed = randNum1.toString().padEnd(5,3).slice(2,4);
 
 function randomizer (initSeed) {
     if (parseInt(initSeed) < 11) {
-        seedNum = parseInt(initSeed) + 50;  
+        seedNum = parseInt(initSeed) + 30;  
     } else {
         seedNum = parseInt(initSeed);   
     }
