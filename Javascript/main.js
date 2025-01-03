@@ -31,6 +31,8 @@ let lastturn = false;
 
 let guessed_words = [];
 
+//Confetti
+const jsConfetti = new JSConfetti();
 
 randNum1 = parseInt(todayDate.getDate().toString() + todayDate.getMonth().toString().padStart(2,0) + todayDate.getYear().toString());
 randNum1 = (randNum1/(todayDate.getDay()+110)) % 1;
@@ -166,6 +168,7 @@ function gameWinCheck(game_board,lastturn,word) {
         if (bk_cnt == 9) {
             const congrats_msg = `Congratulations, ${word} was the second word. You have won the game!`;
             document.getElementById("message").innerHTML = congrats_msg;
+            jsConfetti.addConfetti();
             localStorage.setItem('current_msg',JSON.stringify(congrats_msg));
             gameplay = false;
             localStorage.setItem('gameplay',JSON.stringify(gameplay));
@@ -184,6 +187,7 @@ function gameWinCheck(game_board,lastturn,word) {
         if (bk_cnt == 9) {
             const congrats_msg = `Congratulations, ${word} was the second word. You have won the game!`;
             document.getElementById("message").innerHTML = congrats_msg;
+            jsConfetti.addConfetti();
             localStorage.setItem('current_msg',JSON.stringify(congrats_msg));
             gameplay = false;
             localStorage.setItem('gameplay',JSON.stringify(gameplay));
