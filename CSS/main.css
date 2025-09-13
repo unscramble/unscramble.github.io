@@ -15,6 +15,7 @@ html {
 
 .text-center {
     display: inline-block;
+    max-width: 600px;
 }
 
 body {
@@ -98,3 +99,4 @@ body {
   transition: .75s;
   transform: rotate(360deg);
 }
+
